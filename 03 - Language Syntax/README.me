@@ -1,122 +1,73 @@
-Terraform syllabus
-1. Introduction to terraform
+Terraform Configuration Language Syntax
+a) Terraform top level Blocks
 
-a) Key concepts:
+https://www.terraform.io/docs/configuration/syntax.html
 
-    What is IAC?
-    What are the benefits of IAC?
-    What is Terraform?
-    Who is the vendor of terraform?
-    How do you write terraform configuration files?
+    A block is a container for other content.
+    An example of a block template is as below.
 
-b) How to install terraform:
+Template
 
-    What are the prerequisites for using terraform?
-    How to install terraform on MACOS / Windows using brew /choco
-    How to install Vscode
-    How to install AWS CLI
-    How to configure AWS credentials
+ <BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>"   {
+   # Block body
+  <IDENTIFIER> = <EXPRESSION> # Argument
+ }
 
-2. Command basics:
+Terraform high level blocks
 
-a) Terraform workflow:
+  - Terraform Settings Block
+  - Provider Block
+  - Resource Block
+  - Input Variables Block
+  - Output Values Block
+  - Local Values Block
+  - Data Sources Block
+  - Modules Block
+  - Moved Blocks
+  - Import block
 
-    What is terraform workflow?
-    terraform init
-    terraform validate
-    terraform fmt
-    terraform plan
-    terraform apply
-    terraform destroy
+AWS Example of a resource block.
 
-b) Passing credentials to terraform workflow:
+resource "aws_instance" "ec2demo" {
+  # BLOCK BODY
+  ami           = "ami-04d29b6f966df1537" # Argument
+  instance_type = var.instance_type # Argument with value as expression (Variable value replaced from variables.tf)
 
-    Static credentials
-    Environmental variables
-    Shared credential / configuration files.
+      network_interface {
+       # ...
+    }
+  }
 
-c) Projects
-3. Language syntax:
+    A block has a type (resource in this example). Each block type defines how many labels must follow the type keyword. The resource block type expects two labels, which are aws_instance and ec2demo in the example above. A particular block type may have any number of required labels, or it may require none as with the nested network_interface block type.
 
-a) What are terraform top level blocks?
+    After the block type keyword and any labels, the block body is delimited by the { and } characters. Within the block body, further arguments and blocks may be nested, creating a hierarchy of blocks and their associated arguments.
 
-    Terraform settings block
-    Provider block
-    Resource block
-    Variables block
-    Output block
-    Locals block
-    Data block
-    Modules block
-    Moved block
-    Import block
+b) Arguments, Expressions, Attributes & Meta-Arguments
+Arguments
 
-b) What makes up a terraform block?
+    They assign a value to a name. They appear within blocks. Arguments can be required or optional.
 
-    Arguments
-    Expressions
-    Attributes
-    Meta-arguments
+Expressions
 
-c) Projects
-4. Settings
+    They represent a value, either literally or by referencing and combining other values. They appear as values for arguments, or within other expressions.
 
-a) Set up for basic resource creation
+Attributes
 
-    Set up terraform settings block
-    Set up provider block
-    Set up resource block
-    Set up file function for user data
+    They represent a named piece of data that belongs to some kind of object. The value of an attribute can be referenced in expressions using a dot-separated notation, like aws_instance.example.id.
+    The format looks like resource_type.resource_name.attribute_name
 
-b) Projects
-5. Variables and data sources
+Identifiers
 
-a) Use of variables to make code reusable
+    Argument names, block type names, and the names of most Terraform-specific constructs like resources, input variables, etc. are all identifiers.
 
-    What are variables?
-    Variable types
-    How to reference variables from lists and maps
-    Variable files
+    Identifiers can contain letters, digits, underscores (_), and hyphens (-). The first character of an identifier must not be a digit, to avoid ambiguity with literal numbers.
 
-b) Data sources
+Comments
 
-    What are data sources
-    How are data sources used?
+    The Terraform language supports three different syntax for comments:
 
-6. Meta arguments
+The # begins a single-line comment, ending at the end of the line.
+// also begins a single-line comment, as an alternative to #.
+/* and */ are start and end delimiters for a comment that might span over multiple lines.
+The # single-line comment style is the default comment style and should be used in most cases. Automatic configuration formatting tools may automatically transform // comments into # comments, since the double-slash style is not idiomatic.
 
-    Terraform functions
-    Count
-    for Loops over lists and maps
-    for_each loops over sets and maps
-    dynamic blocks using for_each loops
-    Conditionals using ternary operator
-
-7. Modules and provisioners
-
-a) Modules
-
-    What are modules?
-    Custom modules
-    Official modules
-
-b) Provisioners
-
-    File
-    Remote exec
-    Local exec
-    Null resource
-
-8. Terraform Backend
-
-    Local backend
-    Remote backend
-    State storage using s3
-    DynamoDb state locking
-
-9. Local and Remote state data sources
-
-    Remote state data source
-    local state data source
-
-10. Terraform best practices && Interview question
