@@ -1,4 +1,6 @@
 Terraform Configuration Language Syntax
+https://github.com/LandmakTechnology/terraform-master-class-series/tree/main/03%20-%20Language%20Syntax
+
 a) Terraform top level Blocks
 
 https://www.terraform.io/docs/configuration/syntax.html
