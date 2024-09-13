@@ -8,9 +8,9 @@ https://www.terraform.io/docs/configuration/syntax.html
 
 Template
 
-# <BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>"   {
-   # Block body
- # <IDENTIFIER> = <EXPRESSION> # Argument
+  BLOCK TYPE  BLOCK LABEL  BLOCK LABEL  {
+                                    # Block body
+  IDENTIFIER = EXPRESSION        # Argument
  }
 
 
