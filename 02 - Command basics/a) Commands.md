@@ -1,5 +1,7 @@
 # Terraform Command Basics
 
+https://github.com/LandmakTechnology/terraform-master-class-series/blob/main/02%20-%20Command%20basics/ReadMe.md
+
 ## Terraform configuration files
    - Terraform uses declarative syntax to describe your Infrastructure as Code (IaC) infrastructure
    and then persist it in configuration files that can be shared, reviewed, edited, versioned,
