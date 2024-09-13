@@ -13,6 +13,7 @@ Template
   <IDENTIFIER> = <EXPRESSION> # Argument
  }
 
+
 Terraform high level blocks
 
   - Terraform Settings Block
