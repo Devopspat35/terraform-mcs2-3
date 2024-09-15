@@ -1,5 +1,8 @@
 # Terraform 10 high level blocks
 
+https://github.com/LandmakTechnology/terraform-master-class-series/blob/main/03%20-%20Language%20Syntax/b).%20top-level-blocks-sample.md
+
+
 ## Block-1: **Terraform Settings Block**
 ```
 terraform {
